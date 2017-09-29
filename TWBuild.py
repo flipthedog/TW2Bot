@@ -1,0 +1,60 @@
+########################################################################
+#Author: Floris van Rossum
+#Purpose: Provide all the necessary functions for building buildings
+########################################################################
+#Upgrade Chart:
+# 0. Headquarters
+# 1. Church
+# 2. Rally point
+# 3. statue
+# 4. Timber camp
+# 5. Clay camp
+# 6. Iron Mine
+# 7. farm
+# 8. Warehouse
+# 9. Hiding Place
+# 10. Barracks
+# 11. Stable
+# 12. Workshop
+# 13. Academy
+# 14. Smithy
+# 15. Market
+# 16. Wall
+########################################################################
+#going into a certain building
+def building(x):
+    if(x == 100):
+        #Main screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=overview")
+    if(x == 0):
+        #Headquarters screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+    if(x == 1):
+        #Church Screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+    if(x == 2):
+        #Rallypoint screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+    if(x == 3):
+        #statue Screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+    if(x == 4):
+        #TimberCamp screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+    if(x == 5):
+        #Clay camp Screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+    if(x == 6):
+        #Iron mine screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+    if(x == 7):
+        #Farm Screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+    if(x == 8):
+        #Warehouse screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=storage")
+    if(x == 9):
+        #Hiding Place Screen
+        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+########################################################################
+

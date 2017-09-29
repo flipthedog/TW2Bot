@@ -22,6 +22,8 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
 #HomeMade Imports
+import TWBuild
+import TWFarm
 
 ########################################################################
 #INFO 
@@ -101,6 +103,6 @@ def StartUp():
 StartUp()
 print("Start-Up Complete!")
 while(True):
-	print("hellos")
+	pageLoad(1)
 	#to keep the window
 #do nothing
