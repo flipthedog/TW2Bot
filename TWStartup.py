@@ -14,6 +14,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
 class StartUp:
+	villageURL = "Empty"
 	#Start-Up Function
 	#Creates selenium driver, initializes window to village headquarters screen
 	def StartUpWindow(self):
@@ -40,7 +41,7 @@ class StartUp:
 			print("Error: No active worlds, start a world")
 			exit()
 
-		self.pageLoad(1) #wait for page to load
+		pageLoad(1) #wait for page to load
 
 		#Trying to find popup box if it opens up
 		#i.e. daily rewards
@@ -52,19 +53,19 @@ class StartUp:
 			pass #No daily reward, don't do anything
 
 		#Now the program is in the main screen:
-		villageURL = driver.current_url
-	#Click function clicks on screen at x,y
-	#Necessary in order to get past notifications
-	def click(x,y):
-		win32api.SetCursorPos((x,y))
-		win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,x,y,0,0)
-		win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,x,y,0,0)
+		print(driver.current_url)
+		villageURL = str(driver.current_url)
 
-	#Waiting for page to load
-	def pageLoad(times):
-		time.sleep(times)
+	def getURL(self):
+		return self.villageURL
 
+#Waiting for page to load
+def pageLoad(times):
+	time.sleep(times)
 
-
-	def getURL():
-		return villageURL
+#Click function clicks on screen at x,y
+#Necessary in order to get past notifications
+def click(x,y):
+	win32api.SetCursorPos((x,y))
+	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,x,y,0,0)
+	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,x,y,0,0)
