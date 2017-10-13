@@ -25,10 +25,10 @@ from selenium.common.exceptions import NoSuchElementException
 import TWBuild
 import TWFarm
 import TWStartup
-import TWFind
+#import TWFind
 
 ########################################################################
-#INFO 
+#INFO
 
 #Upgrade Chart:
 # 0. Headquarters
@@ -59,7 +59,9 @@ def pageLoad(times):
 ########################################################################
 #Main Program
 
-TWStartup.StartUp()
+# The start-up object
+StartUp = TWStartup.StartUp()
+StartUp.StartUpWindow()
 
 print("Start-Up Complete!")
 while(True):

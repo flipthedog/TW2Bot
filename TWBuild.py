@@ -35,36 +35,35 @@ import TWStartup
 def building(x):
     if(x == 100):
         #Main screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=overview")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=overview")
     if(x == 0):
         #Headquarters screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
     if(x == 1):
         #Church Screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
     if(x == 2):
         #Rallypoint screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
     if(x == 3):
         #statue Screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
     if(x == 4):
         #TimberCamp screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
     if(x == 5):
         #Clay camp Screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
     if(x == 6):
         #Iron mine screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
     if(x == 7):
         #Farm Screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
     if(x == 8):
         #Warehouse screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=storage")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=storage")
     if(x == 9):
         #Hiding Place Screen
-        TW2StartUp.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
 ########################################################################
-
