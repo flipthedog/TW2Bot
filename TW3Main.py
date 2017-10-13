@@ -65,6 +65,7 @@ StartUp.StartUpWindow()
 
 print("Start-Up Complete!")
 print("The current url:" + StartUp.getURL())
+
 while(True):
 	pageLoad(1)
 	#to keep the window
