@@ -58,13 +58,22 @@ def pageLoad(times):
 
 ########################################################################
 #Main Program
-
 # The start-up object
-StartUp = TWStartup.StartUp()
-StartUp.StartUpWindow()
+# Constructor starts up the program
+#StartUp = TWStartup.StartUp()
+
+
+class TWBot:
+
+	def __init__(self):
+		self.StartUp = TWStartup.StartUp()
+		self.driver = self.StartUp.getDriver()
+		self.URL = self.StartUp.getURL()
+
+Bot = TWBot()
 
 print("Start-Up Complete!")
-print("The current url:" + StartUp.getURL())
+print("The current url:" + str(Bot.URL))
 
 while(True):
 	pageLoad(1)

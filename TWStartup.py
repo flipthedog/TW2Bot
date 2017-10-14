@@ -15,8 +15,8 @@ from selenium.common.exceptions import NoSuchElementException
 
 class StartUp:
 	villageURL = "Empty"
-	def __init__(self, driver, villageURL):
-		self.driver = StartUpWindow(self)
+	def __init__(self):
+		self.driver = self.StartUpWindow()
 
 	#Start-Up Function
 	#Creates selenium driver, initializes window to village headquarters screen
@@ -57,12 +57,16 @@ class StartUp:
 
 		#Now the program is in the main screen:
 		print(driver.current_url)
-		villageURL = driver.current_url
+		self.villageURL = str(driver.current_url)
 		return driver
 
+	# Return the home function of the village
 	def getURL(self):
-		return self.villageURL
+		return str(self.villageURL)
 
+	def getDriver(self):
+		return self.driver
+	
 #Waiting for page to load
 def pageLoad(times):
 	time.sleep(times)
