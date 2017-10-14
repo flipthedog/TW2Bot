@@ -31,7 +31,7 @@ class StartUp:
 		elemLogIn = driver.find_element_by_class_name("btn-login")
 
 		elemUserName.send_keys("bepthedog")
-		elemPassword.send_keys("flip1997")
+		elemPassword.send_keys("flip")
 		elemLogIn.click()
 
 		#Enable if chrome says "Do you want to save your password?"
