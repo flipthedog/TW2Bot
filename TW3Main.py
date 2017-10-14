@@ -70,8 +70,8 @@ class TWBot:
 		self.driver = self.StartUp.getDriver()
 		self.URL = self.StartUp.getURL()
 
+# Initialize the bot object
 Bot = TWBot()
-
 print("Start-Up Complete!")
 print("The current url:" + str(Bot.URL))
 

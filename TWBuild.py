@@ -32,7 +32,8 @@ import TWStartup
 # 16. Wall
 ########################################################################
 #going into a certain building
-def building(x):
+
+def building(url,x):
     if(x == 100):
         #Main screen
         TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=overview")

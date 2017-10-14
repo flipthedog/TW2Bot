@@ -30,7 +30,7 @@ class StartUp:
 		elemLogIn = driver.find_element_by_class_name("btn-login")
 
 		elemUserName.send_keys("bepthedog")
-		elemPassword.send_keys("flip1997")
+		elemPassword.send_keys("flip")
 		elemLogIn.click()
 
 		#Enable if chrome says "Do you want to save your password?"
@@ -56,7 +56,11 @@ class StartUp:
 			pass #No daily reward, don't do anything
 
 		#Now the program is in the main screen:
-		print(driver.current_url)
+		tempURL = str(driver.current_url)
+
+		elemVillageHome = driver.find_element_by_class_name("firstcell_box-item_icon-box_nowrap")
+		elemVillageHome.find_element_by_css_selector('a').get_attribute('href')
+
 		self.villageURL = str(driver.current_url)
 		return driver
 
@@ -66,7 +70,7 @@ class StartUp:
 
 	def getDriver(self):
 		return self.driver
-	
+
 #Waiting for page to load
 def pageLoad(times):
 	time.sleep(times)
