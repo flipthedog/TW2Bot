@@ -75,6 +75,8 @@ Bot = TWBot()
 print("Start-Up Complete!")
 print("The current url:" + str(Bot.URL))
 
+TWBuild.building(Bot.driver, Bot.URL, 0)
+
 while(True):
 	pageLoad(1)
 	#to keep the window

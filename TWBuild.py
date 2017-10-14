@@ -33,19 +33,19 @@ import TWStartup
 ########################################################################
 #going into a certain building
 
-def building(url,x):
+def building(driver,url,x):
     if(x == 100):
         #Main screen
-        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=overview")
+        driver.get(url+"overview")
     if(x == 0):
         #Headquarters screen
-        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+        driver.get(url + "main")
     if(x == 1):
         #Church Screen
-        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+        driver.get(url + "church_f")
     if(x == 2):
         #Rallypoint screen
-        TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=main")
+        driver.get(url + "place")
     if(x == 3):
         #statue Screen
         TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")

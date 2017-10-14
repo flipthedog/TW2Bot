@@ -12,6 +12,7 @@ from selenium.webdriver.common import keys
 from selenium.webdriver.common.alert import Alert #Not needed?
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.action_chains import ActionChains
 
 class StartUp:
 	villageURL = "Empty"
@@ -30,7 +31,7 @@ class StartUp:
 		elemLogIn = driver.find_element_by_class_name("btn-login")
 
 		elemUserName.send_keys("bepthedog")
-		elemPassword.send_keys("flip")
+		elemPassword.send_keys("flip1997")
 		elemLogIn.click()
 
 		#Enable if chrome says "Do you want to save your password?"
@@ -56,12 +57,17 @@ class StartUp:
 			pass #No daily reward, don't do anything
 
 		#Now the program is in the main screen:
+		# reload the village overview to get the href link
+		actions = ActionChains(driver)
+		actions.send_keys('v')
+		actions.perform()
+
+		# wait for the page to load, update link
+		pageLoad(1)
 		tempURL = str(driver.current_url)
-
-		elemVillageHome = driver.find_element_by_class_name("firstcell_box-item_icon-box_nowrap")
-		elemVillageHome.find_element_by_css_selector('a').get_attribute('href')
-
-		self.villageURL = str(driver.current_url)
+		self.villageURL = tempURL[0:56]
+		# https://us30.tribalwars.us/game.php?village=8191&screen=overview
+		# https://us30.tribalwars.us/game.php?village=8191&screen=main
 		return driver
 
 	# Return the home function of the village
