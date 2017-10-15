@@ -76,7 +76,8 @@ Bot = TWBot()
 print("Start-Up Complete!")
 print("The current url:" + str(Bot.URL))
 
-TWBuild.startBuild(Bot.driver,Bot.URL, 4)
+print(TWBuild.QueueEmpty(Bot.driver,Bot.URL))
+#TWBuild.startBuild(Bot.driver,Bot.URL, 4)
 
 while(True):
 	pageLoad(1)
