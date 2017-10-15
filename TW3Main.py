@@ -67,7 +67,7 @@ class TWBot:
 
 	def __init__(self):
 		self.StartUp = TWStartup.StartUp()
-		self.Build = TWBuild.TWBuild()
+		#self.Build = TWBuild.TWBuild()
 		self.driver = self.StartUp.getDriver()
 		self.URL = self.StartUp.getURL()
 
@@ -76,7 +76,7 @@ Bot = TWBot()
 print("Start-Up Complete!")
 print("The current url:" + str(Bot.URL))
 
-TWBuild.startBuild(Bot.driver, 4)
+TWBuild.startBuild(Bot.driver,Bot.URL, 4)
 
 while(True):
 	pageLoad(1)
