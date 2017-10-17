@@ -12,6 +12,7 @@ from selenium.common.exceptions import NoSuchElementException
 from datetime import datetime
 
 import time
+import re
 ########################################################################
 #Upgrade Chart:
 # 0. Headquarters
@@ -36,16 +37,23 @@ import time
 # Will always know what to build next if it needs to
 # implement some kind of priority algorithm
 class TWBuild:
-	def __init__(self, driver, url):
-		self.nextBuildProject #Put some function here later that determines
-		self.url = url
-		self.driver = driver
-		# the next build project
+	def updateResources(self,driver, url):
+		resources = [0] * 3
+		resources = updateCurrentResources(driver,url)
+		self.wood = resources[0]
+		self.clay = resources[1]
+		self.iron = resources[2]
 
 	def BuildNext(building):
 		if (canBuild(self.driver, self.url, building)):
 			startBuild(self.driver, self.url, building)
 		# this will determine if it can build the next build project
+		
+	def __init__(self, driver, url):
+		self.url = url
+		self.driver = driver
+		self.updateResources(self.driver,self.url)
+		# the next build project
 
 ########################################################################
 # For going into a certain building
@@ -72,7 +80,7 @@ def goToBuilding(driver,url,building):
 	    #Clay camp Screen
 		driver.get(url + "stone")
 	if(building == 6):
-	    #Iron mine screen
+		#Iron mine screen
 		driver.get(url + "iron")
 	if(building == 7):
 	    #Farm Screen
@@ -146,10 +154,9 @@ def QueueEmpty(driver,url):
 		queueElt = driver.find_elements_by_xpath("//a[@class = 'btn btn-cancel']")
 	except NoSuchElementException:
 		print("Exception called")
-		goToBuilding(driver, url, 100) # Return to the home screen
 		return True
 		pass
-	print("No exception")
+	goToBuilding(driver,url,100)
 	return 0>=len(queueElt)
 
 ########################################################################
@@ -160,26 +167,31 @@ def CanBuild(driver, url, building):
 ########################################################################
 # Check if there is enough farm space
 def CheckFarm(driver, url):
-	goToBuilding(0) # ensure we are in overview
+	goToBuilding(driver,url,100) # ensure we are in overview
 	maxPop = int(driver.find_element_by_id("pop_max_label").text)
+	print("This is the maxpop:" + str(maxPop))
 	usedPop = int(driver.find_element_by_id("pop_current_label").text)
+	print("This is the usedPop: " + str(usedPop))
 	percent = float((usedPop / maxPop))
 	return percent < 0.9
 
+########################################################################
+# Return the current resources available
 def updateCurrentResources(driver,url):
+	rescArray = [0] * 3
 	goToBuilding(driver,url,100)
-	woodEl = driver.find_element_by_id("wood")
-	clayEl = driver.find_element_by_id("stone")
-	ironEl = driver.find_element_by_id("iron")
-	rescArray[0] = re.findall('\d+', woodEl)
-	rescArray[1] = re.findall('\d+', clayEl)
-	rescArray[3] = re.findall('\d+', ironEl)
+	woodEl = int(driver.find_element_by_id("wood").text)
+	clayEl = int(driver.find_element_by_id("stone").text)
+	ironEl = int(driver.find_element_by_id("iron").text)
+	rescArray[0] = woodEl
+	rescArray[1] = clayEl
+	rescArray[2] = ironEl
 	return rescArray
 
 ########################################################################
 # Return a building level of a specific building
 def BuildingLevel(driver, building):
-	goToBuilding(0)
+	goToBuilding(driver,url,0) # Go to the headquarters
 	levelElt = driver.find_elements_by_xpath("//span[@style='font-size: 0.9em']")
 	if(building == 0):
 	    return re.findall('\d+', levelElt[0].text)

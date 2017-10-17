@@ -182,3 +182,17 @@
 [1014/232331.988:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights.  (0xc0000022)
 [1014/232331.991:ERROR:exception_snapshot_win.cc(87)] thread ID 9388 not found in process
 [1014/232331.991:WARNING:crash_report_exception_handler.cc(62)] ProcessSnapshotWin::Initialize failed
+[1016/163348.919:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights.  (0xc0000022)
+[1016/163348.973:ERROR:exception_snapshot_win.cc(87)] thread ID 9068 not found in process
+[1016/163348.973:WARNING:crash_report_exception_handler.cc(62)] ProcessSnapshotWin::Initialize failed
+[1016/195432.338:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights.  (0xc0000022)
+[1016/195432.341:ERROR:exception_snapshot_win.cc(87)] thread ID 8832 not found in process
+[1016/195432.341:WARNING:crash_report_exception_handler.cc(62)] ProcessSnapshotWin::Initialize failed
+[1016/202408.457:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1016/202408.458:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1016/202408.458:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights.  (0xc0000022)
+[1016/202408.459:ERROR:exception_snapshot_win.cc(87)] thread ID 9228 not found in process
+[1016/202408.459:WARNING:crash_report_exception_handler.cc(62)] ProcessSnapshotWin::Initialize failed
+[1016/202408.467:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights.  (0xc0000022)
+[1016/202408.469:ERROR:exception_snapshot_win.cc(87)] thread ID 3320 not found in process
+[1016/202408.469:WARNING:crash_report_exception_handler.cc(62)] ProcessSnapshotWin::Initialize failed

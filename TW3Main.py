@@ -12,7 +12,7 @@ import time
 import math
 import pywinauto
 import win32api, win32con
-
+import re
 #Selenium Imporots
 import selenium
 from selenium import webdriver
@@ -23,6 +23,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 #HomeMade Imports
 import TWBuild
+from TWBuild import TWBuild
 import TWFarm
 import TWStartup
 #import TWFind
@@ -64,7 +65,6 @@ def pageLoad(times):
 
 
 class TWBot:
-
 	def __init__(self):
 		self.StartUp = TWStartup.StartUp()
 		#self.Build = TWBuild.TWBuild()
@@ -73,11 +73,13 @@ class TWBot:
 
 # Initialize the bot object
 Bot = TWBot()
+Build = TWBuild(Bot.driver,Bot.URL)
 print("Start-Up Complete!")
 print("The current url:" + str(Bot.URL))
 
-print(TWBuild.QueueEmpty(Bot.driver,Bot.URL))
+#print(TWBuild.QueueEmpty(Bot.driver,Bot.URL))
 #TWBuild.startBuild(Bot.driver,Bot.URL, 4)
+#print(TWBuild.CheckFarm(Bot.driver,Bot.URL))
 
 while(True):
 	pageLoad(1)
