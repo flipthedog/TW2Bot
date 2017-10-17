@@ -179,7 +179,7 @@ def CanBuild(driver, url, building):
 		# Check headquarters upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -187,7 +187,7 @@ def CanBuild(driver, url, building):
 		# Check Church Upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -195,7 +195,7 @@ def CanBuild(driver, url, building):
 		# Check Rally Point upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_place")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -203,7 +203,7 @@ def CanBuild(driver, url, building):
 		# Check Statue upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_statue")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -211,7 +211,7 @@ def CanBuild(driver, url, building):
 		# Check Timber camp upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_wood")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -219,7 +219,7 @@ def CanBuild(driver, url, building):
 		# Check clay camp upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_stone")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -227,7 +227,7 @@ def CanBuild(driver, url, building):
 		# Check iron camp upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_iron")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -235,7 +235,7 @@ def CanBuild(driver, url, building):
 		# Check Farm upgade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_farm")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -243,7 +243,7 @@ def CanBuild(driver, url, building):
 		# Check warehouse upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_storage")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -251,7 +251,7 @@ def CanBuild(driver, url, building):
 		# Check hiding place upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_hide")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -259,7 +259,7 @@ def CanBuild(driver, url, building):
 		# Check barracks upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_barracks")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -267,7 +267,7 @@ def CanBuild(driver, url, building):
 		# Check stable upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -275,7 +275,7 @@ def CanBuild(driver, url, building):
 		# Check workshop upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -283,7 +283,7 @@ def CanBuild(driver, url, building):
 		# Check Academy upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -291,7 +291,7 @@ def CanBuild(driver, url, building):
 		# Check smithy upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -299,7 +299,7 @@ def CanBuild(driver, url, building):
 		# Check market upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_market")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True
@@ -307,7 +307,7 @@ def CanBuild(driver, url, building):
 		# Check wall upgrade cost
 		reqResources = [0] * 3
 		reqResources = getBuildingResources(driver,url,"main_buildrow_wall")
-		for(x in range(0,3)):
+		for x in range(0,3):
 			if(reqResources[x] > resources[x]):
 				return False
 		return True

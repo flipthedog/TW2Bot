@@ -82,7 +82,10 @@ print("The current url:" + str(Bot.URL))
 #TWBuild.startBuild(Bot.driver,Bot.URL, 4)
 #print(TWBuild.CheckFarm(Bot.driver,Bot.URL))
 #print(TWBuild.CheckWarehouse(Bot.driver,Bot.URL))
-TWBuild.CanBuild(Bot.driver,Bot.URL,0)
+print("Can we build a timber camp?: " + str(TWBuild.CanBuild(Bot.driver,Bot.URL,4)))
+print("Can we build a Clay camp?: " + str(TWBuild.CanBuild(Bot.driver,Bot.URL,5)))
+print("Can we build a Iron camp?: " + str(TWBuild.CanBuild(Bot.driver,Bot.URL,6)))
+
 
 while(True):
 	pageLoad(1)
