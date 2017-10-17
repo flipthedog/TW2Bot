@@ -51,15 +51,18 @@ class TWBuildO:
 		elif (not(CheckWarehouse(self.driver,self.driver))):
 			print("Not enough warehouse space, upgrade the warehouse")
 			startBuild(self.driver,self.url,8)
-		elif (canBuild(self.driver, self.url, building)):
-			# building = TWChoice.nextBuild()
-			startBuild(self.driver, self.url, building)
-		# this will determine if it can build the next build project
+		else:
+			building = TWChoice.nextBuild(self.driver,self.url)
+			if (CanBuild(self.driver,self.url, building)):
+				startBuild(self.driver, self.url, building)
+			else: print("there are not enough resources to build the building")
+			# this will determine if it can build the next build project
 
 	def __init__(self, driver, url):
 		self.url = url
 		self.driver = driver
 		self.updateResources(self.driver,self.url)
+		# self.TWChoice = TWChoice(driver,url)
 		# the next build project
 
 ########################################################################
@@ -167,10 +170,159 @@ def QueueEmpty(driver,url):
 	return 0>=len(queueElt)
 
 ########################################################################
-# Figure out if requirements to build a building are met, return true
+# Check if there are enough resources to build a building
 def CanBuild(driver, url, building):
-	# check resources, state of the build queue
-	return CheckFarm(driver,url) and QueueEmpty(driver, url)
+	resources = updateCurrentResources(driver,url)
+	goToBuilding(driver,url,0) # go to the headquarters
+	time.sleep(1)
+	if (building == 0):
+		# Check headquarters upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 1):
+		# Check Church Upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 2):
+		# Check Rally Point upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_place")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 3):
+		# Check Statue upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_statue")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 4):
+		# Check Timber camp upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_wood")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 5):
+		# Check clay camp upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_stone")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 6):
+		# Check iron camp upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_iron")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 7):
+		# Check Farm upgade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_farm")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 8):
+		# Check warehouse upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_storage")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 9):
+		# Check hiding place upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_hide")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 10):
+		# Check barracks upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_barracks")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 11):
+		# Check stable upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 12):
+		# Check workshop upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 13):
+		# Check Academy upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 14):
+		# Check smithy upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_main")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 15):
+		# Check market upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_market")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+	if (building == 16):
+		# Check wall upgrade cost
+		reqResources = [0] * 3
+		reqResources = getBuildingResources(driver,url,"main_buildrow_wall")
+		for(x in range(0,3)):
+			if(reqResources[x] > resources[x]):
+				return False
+		return True
+
+	goToBuilding(driver,url,100) # Return to the main overview screen
+
+# Helper method for the method above
+# Gets the resources of a building upgrade
+def getBuildingResources(driver, url, buildingstr):
+	elemRow = driver.find_element_by_id(buildingstr)
+	reqResources = [0] * 3
+	reqResources[0] = int(elemRow.find_element_by_class_name("cost_wood").text)
+	reqResources[1] = int(elemRow.find_element_by_class_name("cost_stone").text)
+	reqResources[2] = int(elemRow.find_element_by_class_name("cost_iron").text)
+	return(reqResources) # Return an array of the resources required for the building
 ########################################################################
 # Check if there is enough farm space, true = enough space, false = not enough
 def CheckFarm(driver, url):
@@ -197,7 +349,7 @@ def updateCurrentResources(driver,url):
 
 ########################################################################
 # Return a building level of a specific building
-def BuildingLevel(driver, building):
+def BuildingLevel(driver,url, building):
 	goToBuilding(driver,url,0) # Go to the headquarters
 	levelElt = driver.find_elements_by_xpath("//span[@style='font-size: 0.9em']")
 	if(building == 0):
@@ -234,7 +386,7 @@ def BuildingLevel(driver, building):
 	    return re.findall('\d+', levelElt[15].text)
 	if(building == 16):
 	    return re.findall('\d+', levelElt[16].text)
-	goToBuilding(100)
+	goToBuilding(driver, url, 100)
 
 ########################################################################
 # Return if there is enough space in the warehouse

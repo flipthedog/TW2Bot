@@ -81,7 +81,8 @@ print("The current url:" + str(Bot.URL))
 #print(TWBuild.QueueEmpty(Bot.driver,Bot.URL))
 #TWBuild.startBuild(Bot.driver,Bot.URL, 4)
 #print(TWBuild.CheckFarm(Bot.driver,Bot.URL))
-print(TWBuild.CheckWarehouse(Bot.driver,Bot.URL))
+#print(TWBuild.CheckWarehouse(Bot.driver,Bot.URL))
+TWBuild.CanBuild(Bot.driver,Bot.URL,0)
 
 while(True):
 	pageLoad(1)

@@ -13,6 +13,8 @@ from datetime import datetime
 
 import time
 import re
+
+import TWBuild
 ########################################################################
 #Upgrade Chart:
 # 0. Headquarters
@@ -44,4 +46,4 @@ class TWChoice:
 		return nexti
 
 def nextBuilding(driver,url):
-	
+	print("this is the level of the woodcutting camp: " + BuildingLevel(driver,url,4))
