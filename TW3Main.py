@@ -23,7 +23,8 @@ from selenium.common.exceptions import NoSuchElementException
 
 #HomeMade Imports
 import TWBuild
-from TWBuild import TWBuild
+from TWBuild import TWBuildO
+from TWBuild import CheckWarehouse
 import TWFarm
 import TWStartup
 #import TWFind
@@ -73,13 +74,14 @@ class TWBot:
 
 # Initialize the bot object
 Bot = TWBot()
-Build = TWBuild(Bot.driver,Bot.URL)
+Build = TWBuildO(Bot.driver,Bot.URL)
 print("Start-Up Complete!")
 print("The current url:" + str(Bot.URL))
 
 #print(TWBuild.QueueEmpty(Bot.driver,Bot.URL))
 #TWBuild.startBuild(Bot.driver,Bot.URL, 4)
 #print(TWBuild.CheckFarm(Bot.driver,Bot.URL))
+print(TWBuild.CheckWarehouse(Bot.driver,Bot.URL))
 
 while(True):
 	pageLoad(1)

@@ -36,7 +36,7 @@ import re
 # TWBuild object
 # Will always know what to build next if it needs to
 # implement some kind of priority algorithm
-class TWBuild:
+class TWBuildO:
 	def updateResources(self,driver, url):
 		resources = [0] * 3
 		resources = updateCurrentResources(driver,url)
@@ -44,11 +44,18 @@ class TWBuild:
 		self.clay = resources[1]
 		self.iron = resources[2]
 
-	def BuildNext(building):
-		if (canBuild(self.driver, self.url, building)):
+	def BuildNext():
+		if (not(CheckFarm(self.driver,self.url))):
+			print("Not enough farm space, so upgrade the farm")
+			startBuild(self.driver,self.url,7)
+		elif (not(CheckWarehouse(self.driver,self.driver))):
+			print("Not enough warehouse space, upgrade the warehouse")
+			startBuild(self.driver,self.url,8)
+		elif (canBuild(self.driver, self.url, building)):
+			# building = TWChoice.nextBuild()
 			startBuild(self.driver, self.url, building)
 		# this will determine if it can build the next build project
-		
+
 	def __init__(self, driver, url):
 		self.url = url
 		self.driver = driver
@@ -165,7 +172,7 @@ def CanBuild(driver, url, building):
 	# check resources, state of the build queue
 	return CheckFarm(driver,url) and QueueEmpty(driver, url)
 ########################################################################
-# Check if there is enough farm space
+# Check if there is enough farm space, true = enough space, false = not enough
 def CheckFarm(driver, url):
 	goToBuilding(driver,url,100) # ensure we are in overview
 	maxPop = int(driver.find_element_by_id("pop_max_label").text)
@@ -228,3 +235,19 @@ def BuildingLevel(driver, building):
 	if(building == 16):
 	    return re.findall('\d+', levelElt[16].text)
 	goToBuilding(100)
+
+########################################################################
+# Return if there is enough space in the warehouse
+# True = Enough space
+# False = not enough space
+def CheckWarehouse(driver,url):
+	warehouseElem = driver.find_element_by_id("storage").text
+	print(warehouseElem)
+	resources = updateCurrentResources(driver, url)
+	print(resources)
+	for x in range(0,3):
+		calcVal = float(int(resources[x])/int(warehouseElem))
+		print(str(calcVal))
+		if((calcVal) > 0.7):
+			return False
+	return True

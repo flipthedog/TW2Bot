@@ -39,4 +39,9 @@ class TWChoice:
 		self.driver = driver
 		self.url = url
 
-	def nextBuild()
+	def nextBuild():
+		self.nexti = nextBuilding(self.driver,self.url)
+		return nexti
+
+def nextBuilding(driver,url):
+	
