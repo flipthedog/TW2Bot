@@ -347,46 +347,6 @@ def updateCurrentResources(driver,url):
 	rescArray[2] = ironEl
 	return rescArray
 
-########################################################################
-# Return a building level of a specific building
-def BuildingLevel(driver,url, building):
-	goToBuilding(driver,url,0) # Go to the headquarters
-	levelElt = driver.find_elements_by_xpath("//span[@style='font-size: 0.9em']")
-	if(building == 0):
-	    return re.findall('\d+', levelElt[0].text)
-	if(building== 1):
-	    return re.findall('\d+', levelElt[1].text)
-	if(building== 2):
-	    return re.findall('\d+', levelElt[2].text)
-	if(building== 3):
-	    return re.findall('\d+', levelElt[3].text)
-	if(building== 4):
-	    return re.findall('\d+', levelElt[4].text)
-	if(building == 5):
-	    return re.findall('\d+', levelElt[5].text)
-	if(building == 6):
-	    return re.findall('\d+', levelElt[6].text)
-	if(building == 7):
-	    return re.findall('\d+', levelElt[7].text)
-	if(building == 8):
-	    return re.findall('\d+', levelElt[8].text)
-	if(building == 9):
-	    return re.findall('\d+', levelElt[9].text)
-	if(building == 10):
-	    return re.findall('\d+', levelElt[10].text)
-	if(building == 11):
-	    return re.findall('\d+', levelElt[11].text)
-	if(building == 12):
-	    return re.findall('\d+', levelElt[12].text)
-	if(building == 13):
-	    return re.findall('\d+', levelElt[13].text)
-	if(building == 14):
-	    return re.findall('\d+', levelElt[14].text)
-	if(building == 15):
-	    return re.findall('\d+', levelElt[15].text)
-	if(building == 16):
-	    return re.findall('\d+', levelElt[16].text)
-	goToBuilding(driver, url, 100)
 
 ########################################################################
 # Return if there is enough space in the warehouse

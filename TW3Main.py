@@ -23,10 +23,12 @@ from selenium.common.exceptions import NoSuchElementException
 
 #HomeMade Imports
 import TWBuild
-from TWBuild import TWBuildO
-from TWBuild import CheckWarehouse
 import TWFarm
 import TWStartup
+import TWChoice
+from TWBuild import TWBuildO
+from TWBuild import CheckWarehouse
+from TWChoice import TWChoiceO
 #import TWFind
 
 ########################################################################
@@ -75,6 +77,8 @@ class TWBot:
 # Initialize the bot object
 Bot = TWBot()
 Build = TWBuildO(Bot.driver,Bot.URL)
+Choice = TWChoiceO(Bot.driver,Bot.URL)
+
 print("Start-Up Complete!")
 print("The current url:" + str(Bot.URL))
 
@@ -82,10 +86,8 @@ print("The current url:" + str(Bot.URL))
 #TWBuild.startBuild(Bot.driver,Bot.URL, 4)
 #print(TWBuild.CheckFarm(Bot.driver,Bot.URL))
 #print(TWBuild.CheckWarehouse(Bot.driver,Bot.URL))
-print("Can we build a timber camp?: " + str(TWBuild.CanBuild(Bot.driver,Bot.URL,4)))
-print("Can we build a Clay camp?: " + str(TWBuild.CanBuild(Bot.driver,Bot.URL,5)))
-print("Can we build a Iron camp?: " + str(TWBuild.CanBuild(Bot.driver,Bot.URL,6)))
-
+print("The current level of the HQ: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,0)))
+print("The current level of the timbercamp: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,4)))
 
 while(True):
 	pageLoad(1)
