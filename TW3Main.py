@@ -86,9 +86,10 @@ print("The current url:" + str(Bot.URL))
 #TWBuild.startBuild(Bot.driver,Bot.URL, 4)
 #print(TWBuild.CheckFarm(Bot.driver,Bot.URL))
 #print(TWBuild.CheckWarehouse(Bot.driver,Bot.URL))
-print("The current level of the HQ: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,0)))
-print("The current level of the timbercamp: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,4)))
-
+#print("The current level of the HQ: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,0)))
+#print("The current level of the timbercamp: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,4)))
+units = TWFarm.getCurrentUnit(Bot.driver,Bot.URL)
+TWFarm.sendTroops(Bot.driver,Bot.URL,units,416,492)
 while(True):
 	pageLoad(1)
 	#to keep the window
