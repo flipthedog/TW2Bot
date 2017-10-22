@@ -29,6 +29,7 @@ import TWChoice
 from TWBuild import TWBuildO
 from TWBuild import CheckWarehouse
 from TWChoice import TWChoiceO
+from TWFarm import TWFarmO
 #import TWFind
 
 ########################################################################
@@ -78,7 +79,7 @@ class TWBot:
 Bot = TWBot()
 Build = TWBuildO(Bot.driver,Bot.URL)
 Choice = TWChoiceO(Bot.driver,Bot.URL)
-
+Farm = TWFarmO(Bot.driver,Bot.URL)
 print("Start-Up Complete!")
 print("The current url:" + str(Bot.URL))
 
@@ -86,10 +87,16 @@ print("The current url:" + str(Bot.URL))
 #TWBuild.startBuild(Bot.driver,Bot.URL, 4)
 #print(TWBuild.CheckFarm(Bot.driver,Bot.URL))
 #print(TWBuild.CheckWarehouse(Bot.driver,Bot.URL))
-#print("The current level of the HQ: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,0)))
-#print("The current level of the timbercamp: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,4)))
-units = TWFarm.getCurrentUnit(Bot.driver,Bot.URL)
-TWFarm.sendTroops(Bot.driver,Bot.URL,units,416,492)
+print("The current level of the HQ: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,0)))
+print("The current level of the timbercamp: " + str(TWChoice.BuildingLevel(Bot.driver,Bot.URL,4)))
+#units = TWFarm.getCurrentUnit(Bot.driver,Bot.URL)
+#TWFarm.sendTroops(Bot.driver,Bot.URL,units,416,492)
+
+#Farm.addVillage(416,492)
+#village = [0] * 2
+#village = Farm.getVillage(0)
+#TWFarm.sendTroops(Bot.driver,Bot.URL,units,village[0],village[1])
+
 while(True):
 	pageLoad(1)
 	#to keep the window

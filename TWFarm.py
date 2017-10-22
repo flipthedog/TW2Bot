@@ -32,6 +32,17 @@ def TWFarmO(self,driver,url):
 	self.driver = driver
 	self.url = url
 	self.units = getCurrentUnit(self.driver,self.url)
+	self.barbs = [0] * 100
+	self.numberBarb = 0
+
+	def addVillage(self,coordsX,coordsY):
+		villageCoordinates = [0] * 2
+		villageCoordinates = [coordsX,coordsY]
+		barbs.insert(villageCoordinates)
+
+	def getVillage(self,number):
+		return barbs[number]
+
 ########################################################################
 # This gets the number of units currently in the village
 # returns the units as an array
@@ -61,3 +72,4 @@ def sendTroops(driver,url,units,coordsX,coordsY):
 	attackButton2 = driver.find_element_by_id("troop_confirm_go")
 	attackButton2.click()
 	TWBuild.goToBuilding(driver,url,100)
+########################################################################
