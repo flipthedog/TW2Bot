@@ -22,7 +22,7 @@ class StartUp:
 	#Start-Up Function
 	#Creates selenium driver, initializes window to village headquarters screen
 	def StartUpWindow(self):
-		driver = webdriver.Chrome(executable_path=r"C:\Python\selenium\webdriver\chrome\chromedriver.exe")
+		driver = webdriver.Chrome(executable_path=r"C:\Users\Jan\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\selenium\webdriver\chrome\chromedriver.exe")
 		chrome_options = webdriver.ChromeOptions() #Not needed?
 
 		driver.get("https://www.tribalwars.us/")
@@ -30,8 +30,11 @@ class StartUp:
 		elemPassword = driver.find_element_by_id("password")
 		elemLogIn = driver.find_element_by_class_name("btn-login")
 
-		elemUserName.send_keys("bepthedog")
-		elemPassword.send_keys("flip1997")
+		username = input("Username: ")
+		password = input("Password: ")
+
+		elemUserName.send_keys(username)
+		elemPassword.send_keys(password)
 		elemLogIn.click()
 
 		#Enable if chrome says "Do you want to save your password?"

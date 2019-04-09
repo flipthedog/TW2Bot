@@ -66,9 +66,10 @@ def pageLoad(times):
 class TWBot:
 
 	def __init__(self):
-		self.StartUp = TWStartup.StartUp()
-		self.driver = self.StartUp.getDriver()
-		self.URL = self.StartUp.getURL()
+		# self.StartUp = TWStartup.StartUp()
+		# self.driver = self.StartUp.getDriver()
+		# self.URL = self.StartUp.getURL()
+		self.farm = TWFarm.Farm("farm_villages")
 
 # Initialize the bot object
 Bot = TWBot()
@@ -80,4 +81,3 @@ TWBuild.building(Bot.driver, Bot.URL, 0)
 while(True):
 	pageLoad(1)
 	#to keep the window
-#do nothing
