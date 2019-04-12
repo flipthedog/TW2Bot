@@ -1,3 +1,7 @@
+########################################################################
+#Author: Floris
+#Purpose: Setup the bot, setup selenium
+########################################################################
 #System Imports
 import sys, os
 import time
@@ -74,11 +78,9 @@ class StartUp:
 		return driver
 
 	# Return the home function of the village
-	def getURL(self):
+	def get_url(self):
 		return str(self.villageURL)
 
-	def getDriver(self):
-		return self.driver
 
 #Waiting for page to load
 def pageLoad(times):

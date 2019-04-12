@@ -1,7 +1,7 @@
 ########################################################################
 #TWBot v3.0
-#Author: Floris van Rossum
-#Purpose: Bot for Tribal Wars 2
+#Author: Floris
+#Purpose: Bot for Tribal Wars
 
 ########################################################################
 #IMPORT STATEMENTS
@@ -9,22 +9,12 @@
 #System Imports
 import sys, os
 import time
-import math
-import pywinauto
-import win32api, win32con
-
-#Selenium Imporots
-import selenium
-from selenium import webdriver
-from selenium.webdriver.common import keys
-from selenium.webdriver.common.alert import Alert #Not needed?
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
 
 #HomeMade Imports
 import TWBuild
 import TWFarm
 import TWStartup
+import TWTroops
 #import TWFind
 
 ########################################################################
@@ -54,7 +44,7 @@ import TWStartup
 
 #Waiting for page to load
 def pageLoad(times):
-	time.sleep(times)
+    time.sleep(times)
 
 ########################################################################
 #Main Program
@@ -65,19 +55,27 @@ def pageLoad(times):
 
 class TWBot:
 
-	def __init__(self):
-		# self.StartUp = TWStartup.StartUp()
-		# self.driver = self.StartUp.getDriver()
-		# self.URL = self.StartUp.getURL()
-		self.farm = TWFarm.Farm("farm_villages")
+    def __init__(self):
+        self.startup = TWStartup.StartUp()
+        self.driver = self.startup.driver
+        self.url = self.startup.get_url()
+        self.build = TWBuild.Build(self.driver, self.url)
+        self.troops = TWTroops.Troops(self.driver, self.url, self.build)
+        self.farm = TWFarm.Farm(self.driver, self.url, self.build, "farm_villages", "templates")
+
+    def update(self):
+        self.troops.update_troops()
+
+    def farm(self):
+        next_village = self.farm.get_next_village()
+        next_attack = self.farm.find_useable_template(self.troops.troops)
+
 
 # Initialize the bot object
 Bot = TWBot()
 print("Start-Up Complete!")
-print("The current url:" + str(Bot.URL))
+print("The current url:" + str(Bot.url))
 
-TWBuild.building(Bot.driver, Bot.URL, 0)
-
-while(True):
-	pageLoad(1)
-	#to keep the window
+while (1):
+    pageLoad(1)
+    Bot.update()
