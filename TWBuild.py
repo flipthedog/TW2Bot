@@ -3,6 +3,7 @@
 #Purpose: Provide all the necessary functions for building buildings
 ########################################################################
 #Import statments
+import time, random
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common import keys
@@ -52,12 +53,20 @@ class Build:
 
     # TODO: Write update function to determine building level, cost, population
     def update(self):
-        pass
+        self.building(0)
+
+        elements = self.driver.find_elements_by_id("main_buildrow_main")
+
+        for el in elements:
+            print(el, el.text)
     
     def custom_building(self, url, custom_appendix):
-        
+        time.sleep(random.uniform(0, 3) + 1)
+
         if custom_appendix == "place&mode=units" or custom_appendix == "units":
             self.driver.get(url + "place&mode=units")
+
+        time.sleep(random.uniform(0, 3) + 1)
 
     # Visit a certain building
     def building(self, x):
@@ -94,4 +103,7 @@ class Build:
         if(x == 9):
             #Hiding Place Screen
             TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+
+        time.sleep(random.uniform(0, 3) + 1)
+
 ########################################################################

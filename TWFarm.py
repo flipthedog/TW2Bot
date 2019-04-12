@@ -3,7 +3,7 @@
 #Purpose: Provide all the necessary functions for sending a specified number of
 #		  troops out to farm
 ########################################################################
-import re
+import re, time, random
 
 class Farm:
 
@@ -21,23 +21,79 @@ class Farm:
         self.read_templates(template_file_name)
         print(self.template_array)
 
+    # Wait a random amount of time
+    # Between 1 - 4 seconds
+    def random_wait(self):
+        time.sleep((random.uniform(0, 1) * 3) + 1)
+
+    def is_same(self, array1, array2):
+
+        for el in array1:
+
+            for el2 in array2:
+
+                if el is not el2:
+                    return False
+
+        return True
+
+    def send_attack(self, troops):
+        next_troops = self.find_usable_template(troops)
+        empty_troops = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+        print("selected troops: ", next_troops)
+
+        if not self.is_same(next_troops, empty_troops):
+
+            next_village = self.get_next_village()
+
+            self.build.building("place")
+
+            input_elements = self.driver.find_elements_by_class_name("unitsInput")
+            village_input = self.driver.find_element_by_class_name("target-input-field")
+
+            village_input.send_keys(str(next_village[0]) + "|" + str(next_village[1]))
+            self.random_wait()
+
+            for i in range(len(troops) - 1):
+                el = input_elements[i]
+                if next_troops[i] is not 0:
+                    el.send_keys(next_troops[i])
+                    self.random_wait()
+
+            attack_button = self.driver.find_element_by_class_name("btn-attack")
+            attack_button.click()
+
+            self.random_wait()
+
+            confirm_button = self.driver.find_element_by_class_name("btn-attack")
+            confirm_button.click()
+        else:
+            print("No available troops")
+
     # Return the next village to farm
     def get_next_village(self):
         return self.villages[self.village_index + 1]
 
-    # Get the useable template
-    def find_useable_template(self, current_troops):
-
+    # Get the usable template
+    def find_usable_template(self, current_troops):
         for template in self.template_array:
+            print("Checking template:", template)
+            j = 0
 
-            for i in len(current_troops):
+            for i in range(len(current_troops)):
 
-                if template[i] > current_troops[i]:
-                    break
+                if template[i] <= current_troops[i]:
+                    j = j + 1
+                else:
+                    continue
 
-            return template
+                if j >= 11:
+                    print("Return:", template)
+                    return template
 
-        return [-1]
+        print("Return empty template")
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     def read_templates(self, file_name):
         if ".txt" not in file_name:

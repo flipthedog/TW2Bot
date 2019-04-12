@@ -3,6 +3,9 @@
 #Purpose: Provide all the necessary functions for sending a specified number of
 #		  troops out to farm
 ########################################################################
+
+import time
+
 class Troops:
 
     def __init__(self, driver, url, build):
@@ -30,6 +33,7 @@ class Troops:
     # Update the amount of troops currently in the village
     def update_troops(self):
         self.build.custom_building(self.url, "units")
+        time.sleep(1)
         updated_troops = []
         updated_troops.append(int(self.driver.find_element_by_class_name("unit-item-spear").text))
         updated_troops.append(int(self.driver.find_element_by_class_name("unit-item-sword").text))

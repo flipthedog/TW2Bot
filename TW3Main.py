@@ -1,26 +1,24 @@
 ########################################################################
-#TWBot v3.0
-#Author: Floris
-#Purpose: Bot for Tribal Wars
+# TWBot v3.0
+# Author: Floris
+# Purpose: Bot for Tribal Wars
 
 ########################################################################
-#IMPORT STATEMENTS
+# IMPORT STATEMENTS
 
-#System Imports
-import sys, os
-import time
+# System Imports
+import time, random
 
-#HomeMade Imports
+# HomeMade Imports
 import TWBuild
 import TWFarm
 import TWStartup
 import TWTroops
-#import TWFind
 
 ########################################################################
-#INFO
+# INFO
 
-#Upgrade Chart:
+# Upgrade Chart:
 # 0. Headquarters
 # 1. Church
 # 2. Rally point
@@ -40,11 +38,11 @@ import TWTroops
 # 16. Wall
 
 ########################################################################
-#FUNCTIONS
+# FUNCTIONS
 
-#Waiting for page to load
+# Waiting for page to load
 def pageLoad(times):
-    time.sleep(times)
+    time.sleep(random.uniform(0, times) + 1)
 
 ########################################################################
 #Main Program
@@ -61,14 +59,12 @@ class TWBot:
         self.url = self.startup.get_url()
         self.build = TWBuild.Build(self.driver, self.url)
         self.troops = TWTroops.Troops(self.driver, self.url, self.build)
-        self.farm = TWFarm.Farm(self.driver, self.url, self.build, "farm_villages", "templates")
+        self.farm = TWFarm.Farm(self.driver, self.url, self.build, "farm_villages2", "templates2")
 
     def update(self):
+        #self.build.update()
         self.troops.update_troops()
-
-    def farm(self):
-        next_village = self.farm.get_next_village()
-        next_attack = self.farm.find_useable_template(self.troops.troops)
+        self.farm.send_attack(self.troops.troops)
 
 
 # Initialize the bot object
@@ -77,5 +73,5 @@ print("Start-Up Complete!")
 print("The current url:" + str(Bot.url))
 
 while (1):
-    pageLoad(1)
     Bot.update()
+    pageLoad(5)
