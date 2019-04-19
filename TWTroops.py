@@ -1,10 +1,11 @@
 ########################################################################
-#Author: Floris
-#Purpose: Provide all the necessary functions for sending a specified number of
-#		  troops out to farm
+# Author: Floris
+# Purpose: Provide all the necessary functions for sending a specified number of
+#		   troops out to farm
 ########################################################################
 
 import time
+
 
 class Troops:
 
@@ -28,10 +29,10 @@ class Troops:
         # 12 - MILITIA
         self.troops = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-
-
     # Update the amount of troops currently in the village
     def update_troops(self):
+        """Update the object with amount of troops in the village"""
+        # TODO: Error handling
         self.build.custom_building(self.url, "units")
         time.sleep(1)
         updated_troops = []

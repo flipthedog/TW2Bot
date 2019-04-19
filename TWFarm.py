@@ -3,7 +3,9 @@
 #Purpose: Provide all the necessary functions for sending a specified number of
 #		  troops out to farm
 ########################################################################
-import re, time, random
+import re
+import time
+import random
 
 class Farm:
 
@@ -24,10 +26,11 @@ class Farm:
     # Wait a random amount of time
     # Between 1 - 4 seconds
     def random_wait(self):
+        """Wait a random amount of time between actions"""
         time.sleep((random.uniform(0, 1) * 3) + 1)
 
     def is_same(self, array1, array2):
-
+        """Check if two arrays are the same"""
         for el in array1:
 
             for el2 in array2:
@@ -38,6 +41,9 @@ class Farm:
         return True
 
     def send_attack(self, troops):
+        """Check for available templates, send troops to village """
+        # TODO: Make this more robust
+        # TODO: Minimize requests
         next_troops = self.find_usable_template(troops)
         empty_troops = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
@@ -73,10 +79,12 @@ class Farm:
 
     # Return the next village to farm
     def get_next_village(self):
+        """Return the next villages from all possible villages"""
         return self.villages[self.village_index + 1]
 
     # Get the usable template
     def find_usable_template(self, current_troops):
+        """Go through current troops and determine a useable template"""
         for template in self.template_array:
             print("Checking template:", template)
             j = 0
@@ -96,6 +104,8 @@ class Farm:
         return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     def read_templates(self, file_name):
+        """Read the templates storage .txt file"""
+        # TODO: More error handling
         if ".txt" not in file_name:
             file_name = file_name + ".txt"
         file = open(file_name, 'r')
@@ -115,6 +125,8 @@ class Farm:
             self.template_array.append(template)
 
     def read_villages_file(self, file_name):
+        """Read the villages storage .txt file"""
+        # TODO: More error handling
         if ".txt" not in file_name:
             file_name = file_name + ".txt"
         file = open(file_name, 'r')

@@ -1,9 +1,10 @@
 ########################################################################
-#Author: Floris
-#Purpose: Provide all the necessary functions for building buildings
+# Author: Floris
+# Purpose: Provide all the necessary functions for building buildings
 ########################################################################
-#Import statments
-import time, random
+# Import statments
+import time
+import random
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common import keys
@@ -37,8 +38,9 @@ import TWStartup
 class Build:
 
     def __init__(self, driver, url):
-        self.levels = []
+        self.levels = {}
         self.cost = []
+        self.points = 0
         self.population_free = 0
         self.population_total = 0
         
@@ -51,16 +53,141 @@ class Build:
         # 2 - IRON
         self.resources = [0, 0, 0]
 
-    # TODO: Write update function to determine building level, cost, population
     def update(self):
+        """Update function of the build object"""
+        self.update_buildings()
+        self.update_resources()
+        self.points = int(self.driver.find_element_by_id("rank_points").text)
+
+    def update_population(self):
+        """Update the object with the population currently in the village"""
+        current_pop = int(self.driver.find_element_by_id("pop_current_label").text)
+        max_pop = int(self.driver.find_element_by_id("pop_max_label").text)
+        self.population_total = max_pop
+        self.population_free = max_pop - current_pop
+
+    def update_resources(self):
+        """Update the resources currently in the village"""
+        wood_element = self.driver.find_element_by_id("wood")
+        stone_element = self.driver.find_element_by_id("stone")
+        iron_element = self.driver.find_element_by_id("iron")
+        self.resources = [int(wood_element.text), int(stone_element.text), int(iron_element.text)]
+        # print(self.resources)
+
+    def update_buildings(self):
+        """Store the current building levels"""
+        #TODO: Fix edge cases for unfinished, completed buildings
         self.building(0)
+        levels = {}
 
-        elements = self.driver.find_elements_by_id("main_buildrow_main")
+        try:
+            headquarters_element = self.driver.find_element_by_id("main_buildrow_main")
+            levels["headquarters"] = (int(headquarters_element.text.split()[2]))
+        except NoSuchElementException:
+            pass
 
-        for el in elements:
-            print(el, el.text)
-    
+        try:
+            barracks_element = self.driver.find_element_by_id("main_buildrow_barracks")
+            levels["barracks"] = (int(barracks_element.text.split()[2]))
+        except NoSuchElementException:
+            pass
+
+        try:
+            stable_element = self.driver.find_element_by_id("main_buildrow_stable")
+            levels["stable"] = (int(stable_element.text.split()[2]))
+        except NoSuchElementException:
+            pass
+
+        try:
+            garage_element = self.driver.find_element_by_id("main_buildrow_garage")
+            levels["garage"] = (int(garage_element.text.split()[2]))
+        except NoSuchElementException:
+            pass
+
+        try:
+            smith_element = self.driver.find_element_by_id("main_buildrow_smithy")
+            levels["smith"] = (int(smith_element.text.split()[2]))
+        except NoSuchElementException:
+            pass
+
+        try:
+            academy_element = self.driver.find_element_by_id("main_buildrow_academy")
+            levels["academy"] = (int(academy_element.text.split()[2]))
+        except NoSuchElementException:
+            levels["academy"] = 0
+
+        try:
+            church_element = self.driver.find_element_by_id("main_buildrow_church_f")
+            levels["church"] = (int(church_element.text.split()[3]))
+        except NoSuchElementException:
+            levels["church"] = 0
+
+        try:
+            place_element = self.driver.find_element_by_id("main_buildrow_place")
+            levels["place"] = int(place_element.text.split()[3])
+        except (NoSuchElementException, ValueError) as e:
+            levels["place"] = 0
+
+        try:
+            statue_element = self.driver.find_element_by_id("main_buildrow_statue")
+            levels["statue"] = (int(statue_element.text.split()[2]))
+        except (NoSuchElementException, ValueError) as e:
+            levels["statue"] = 0
+
+        try:
+            market_element = self.driver.find_element_by_id("main_buildrow_market")
+            levels["market"] = (int(market_element.text.split()[2]))
+        except (NoSuchElementException, ValueError) as e:
+            levels["market"] = 0
+
+        try:
+            wood_element = self.driver.find_element_by_id("main_buildrow_wood")
+            levels["wood"] = (int(wood_element.text.split()[3]))
+        except (NoSuchElementException, ValueError) as e:
+            levels["wood"] = 0
+
+        try:
+            stone_element = self.driver.find_element_by_id("main_buildrow_stone")
+            levels["stone"] = (int(stone_element.text.split()[3]))
+        except (NoSuchElementException, ValueError) as e:
+            levels["stone"] = 0
+
+        try:
+            iron_element = self.driver.find_element_by_id("main_buildrow_iron")
+            levels["iron"] = (int(iron_element.text.split()[3]))
+        except (NoSuchElementException, ValueError) as e:
+            levels["iron"] = 0
+
+        try:
+            farm_element = self.driver.find_element_by_id("main_buildrow_farm")
+            levels["farm"] = (int(farm_element.text.split()[2]))
+        except NoSuchElementException:
+            levels["farm"] = 0
+
+        try:
+            storage_element = self.driver.find_element_by_id("main_buildrow_storage")
+            levels["storage"] = (int(storage_element.text.split()[2]))
+        except NoSuchElementException:
+            levels["storage"] = 0
+
+        try:
+            hide_element = self.driver.find_element_by_id("main_buildrow_hide")
+            levels["hide"] = (int(hide_element.text.split()[3]))
+        except (NoSuchElementException, ValueError) as e:
+            levels["hide"] = 0
+
+        try:
+            wall_element = self.driver.find_element_by_id("main_buildrow_wall")
+            levels["wall"] = (int(wall_element.text.split()[2]))
+        except (NoSuchElementException, ValueError) as e:
+            levels["wall"] = 0
+
+        # print("Levels: ", levels)
+        self.levels = levels
+        self.building(100)
+
     def custom_building(self, url, custom_appendix):
+        """Go to a custom url of a building"""
         time.sleep(random.uniform(0, 3) + 1)
 
         if custom_appendix == "place&mode=units" or custom_appendix == "units":
@@ -70,6 +197,7 @@ class Build:
 
     # Visit a certain building
     def building(self, x):
+        """Go to a specific building, follow the commented guides for building number & names"""
         if(x == 100 or x == "overview"):
             #Main screen
            self.driver.get(self.url+"overview")
