@@ -34,25 +34,26 @@ import TWTroops
 ########################################################################
 # INFO
 
-# TODO: Fix this list to be consistent
-# Upgrade Chart:
+# Move Chart:
+# 100. Overview
 # 0. Headquarters
-# 1. Church
-# 2. Rally point
-# 3. statue
-# 4. Timber camp
-# 5. Clay camp
-# 6. Iron Mine
-# 7. farm
-# 8. Warehouse
-# 9. Hiding Place
-# 10. Barracks
-# 11. Stable
-# 12. Workshop
-# 13. Academy
-# 14. Smithy
-# 15. Market
-# 16. Wall
+# 1. Barracks
+# 2. Stable
+# 3. Workshop
+# 4. Church
+# 5. Watchtower
+# 6. Academy
+# 7. Smithy
+# 8. Rally Point
+# 9. Statue
+# 10. Market
+# 11. Timber Camp
+# 12. Clay pit
+# 13. Iron mine
+# 14. Farm
+# 15. Warehouse
+# 16. Hiding Place
+# 17. Wall
 
 ########################################################################
 # FUNCTIONS
@@ -87,17 +88,19 @@ class TWBot:
             #self.troops.update_troops()
             #self.farm.send_attack(self.troops.troops)
         else:
-            pass
+            return False
 
     def bot_check(self):
         """Check if the bot captcha code is on the screen"""
         # TODO: More better bot check
         try:
-            print("Bot check found")
-            self.driver.find_element_by_id("recaptcha-anchor-label")
-            return True
+            bot_el = self.driver.find_element_by_class_name("recaptcha-anchor-label")
+            if bot_el.text == "I'm not a robot":
+                return True
+            else:
+                return False
         except NoSuchElementException:
-            #print("No bot-check found")
+            print("No bot-check found")
             return False
 
 ########################################################################
@@ -109,6 +112,9 @@ print("Start-Up Complete!")
 print("The current url:" + str(Bot.url))
 
 # TODO: Create better loop conditions & states
+checker = True
 while (1):
+    # Check if bot state is triggered
+
     Bot.update()
     pageLoad(5)

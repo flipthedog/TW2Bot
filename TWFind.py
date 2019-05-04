@@ -25,5 +25,4 @@ from selenium.common.exceptions import NoSuchElementException
 #FUNCTIONS:
 
 def questFind():
-	
-
+	pass

@@ -24,9 +24,10 @@ class StartUp:
         driver = webdriver.Chrome(executable_path=r"C:\Users\Jan\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\selenium\webdriver\chrome\chromedriver.exe")
         chrome_options = webdriver.ChromeOptions() #Not needed?
 
-        driver.get("https://www.tribalwars.us/")
-        #driver.get("https://www.tribalwars.net/")
+        #domain = input("Enter server domain (.net, .ge, .ch, etc.): ")
+        #driver.get("https://www.tribalwars" + domain + "/")
 
+        driver.get("https://www.tribalwars.us/")
 
         elemUserName = driver.find_element_by_id("user")
         elemPassword = driver.find_element_by_id("password")
@@ -34,12 +35,12 @@ class StartUp:
 
         username = input("Username: ")
         password = input("Password: ")
+        print("You entered username: ", username, " password: ", password)
 
         elemUserName.send_keys(username)
         elemPassword.send_keys(password)
         elemLogIn.click()
 
-        #Enable if chrome says "Do you want to save your password?"
         pageLoad(1) #wait for page to load
 
         #Clicking on the correct world
@@ -70,6 +71,7 @@ class StartUp:
         # wait for the page to load, update link
         pageLoad(1)
         tempURL = str(driver.current_url)
+
 
         self.url = tempURL[0:56]
         #self.villageURL = tempURL[0:59]

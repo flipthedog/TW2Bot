@@ -204,33 +204,54 @@ class Build:
         if(x == 0 or x == "main"):
             #Headquarters screen
            self.driver.get(self.url + "main")
-        if(x == 1 or x == "church_f"):
+        if(x == 4 or x == "church_f"):
             #Church Screen
            self.driver.get(self.url + "church_f")
-        if(x == 2 or x == "place"):
+        if(x == 8 or x == "place"):
             #Rallypoint screen
            self.driver.get(self.url + "place")
-        if(x == 3 or x == "statue"):
+        if(x == 9 or x == "statue"):
             #statue Screen
            self.driver.get(self.url + "statue")
-        if(x == 4 or x == "wood"):
+        if(x == 11 or x == "wood"):
             #TimberCamp screen
            self.driver.get(self.url + "wood")
-        if(x == 5 or x == "stone"):
+        if(x == 12 or x == "stone"):
             #Clay camp Screen
            self.driver.get(self.url + "stone")
-        if(x == 6 or x == "iron"):
+        if(x == 13 or x == "iron"):
             #Iron mine screen
            self.driver.get(self.url + "iron")
-        if(x == 7 or x == "farm"):
+        if(x == 14 or x == "farm"):
             #Farm Screen
            self.driver.get(self.url + "farm")
-        if(x == 8 or x == "store"):
+        if(x == 15 or x == "store"):
             #Warehouse screen
            self.driver.get(self.url + "store")
-        if(x == 9):
+        if(x == 16 or x == "hide"):
             #Hiding Place Screen
-            TWStartup.driver.get("https://us29.tribalwars.us/game.php?village=4444&screen=church_f")
+            self.driver.get(self.url + "hide")
+        if(x == 1 or x == "barracks"):
+            # Barracks Screen
+            self.driver.get(self.url + "barracks")
+        if(x == 2 or x == "stable"):
+            # Stable Screen
+            self.driver.get(self.url + "stable")
+        if (x == 3 or x == "workshop"):
+            # Workshop screen
+            self.driver.get(self.url + "garage")
+        if (x == 6 or x == "academy"):
+            # Academy Screen
+            self.driver.get(self.url + "academy")
+        if (x == 7 or x == "smith"):
+            # Smith Screen
+            self.driver.get(self.url + "smith")
+        if (x == 10 or x == "market"):
+            # Market Screen
+            self.driver.get(self.url + "market")
+        if (x == 17 or x == "wall" ):
+            # Wall Screen
+            self.driver.get(self.url + "wall")
 
         time.sleep(random.uniform(0, 3) + 1)
 
