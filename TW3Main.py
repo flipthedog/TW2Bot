@@ -112,9 +112,9 @@ print("Start-Up Complete!")
 print("The current url:" + str(Bot.url))
 
 # TODO: Create better loop conditions & states
-checker = True
-while (1):
-    # Check if bot state is triggered
-
-    Bot.update()
-    pageLoad(5)
+#checker = True
+# while (1):
+#     # Check if bot state is triggered
+#
+#     Bot.update()
+#     pageLoad(5)
